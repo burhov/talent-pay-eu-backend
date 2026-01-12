@@ -1,12 +1,14 @@
 steps:
-  - name: gcr.io/cloud-builders/gcloud
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+    entrypoint: bash
     args:
-      - run
-      - deploy
-      - talent-pay-eu
-      - --source=.
-      - --region=europe-west1
-      - --allow-unauthenticated
+      - -c
+      - |
+        set -euo pipefail
+        gcloud run deploy "talent-pay-eu" \
+          --source="." \
+          --region="europe-west1" \
+          --allow-unauthenticated
 
 options:
   logging: CLOUD_LOGGING_ONLY
