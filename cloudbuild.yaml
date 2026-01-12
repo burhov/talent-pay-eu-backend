@@ -1,0 +1,9 @@
+steps:
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - run
+      - deploy
+      - talent-pay-eu
+      - --source=.
+      - --region=europe-west1
+      - --allow-unauthenticated
