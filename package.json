@@ -1,0 +1,17 @@
+{
+  "name": "talent-pay-eu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.0",
+    "express": "^4.22.1"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
