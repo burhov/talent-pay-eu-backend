@@ -6,6 +6,29 @@ const axios = require('axios');
 
 const app = express();
 
+/* BEGIN AUTO_CORS_MIDDLEWARE */
+const ALLOWED_ORIGINS = new Set([
+  'https://talent.mindcore.club',
+]);
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Max-Age', '86400');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  next();
+});
+/* END AUTO_CORS_MIDDLEWARE */
+
+
 // Cloud Run behind proxy
 app.set('trust proxy', true);
 
